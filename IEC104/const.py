@@ -169,6 +169,13 @@ SCS_ENUM = {
     0x01: 'ON'
 }
 
+DCS_ENUM = {
+    0x00: 'not permitted',
+    0x01: 'OFF',
+    0x02: 'ON',
+    0x03: 'not permitted',
+}
+
 PN_ENUM = {
     0x00: 'Positive confirm',
     0x40: 'Negative confirm'

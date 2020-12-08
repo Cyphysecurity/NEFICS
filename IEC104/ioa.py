@@ -3,7 +3,7 @@
 from struct import unpack
 from scapy.fields import PacketField, LEShortField, ShortField, FlagsField, ByteEnumField, BitEnumField, BitField, XIntField
 from .fields import IOAID, LEFloatField, ByteField, SignedShortField
-from .const import QDS_FLAGS, SU, DOW_ENUM, SEL_EXEC, DPI_ENUM, DIQ_FLAGS, SIQ_FLAGS, TRANSIENT, QOI_ENUM, R_ENUM, I_ENUM, QU_ENUM, SEL_EXEC, SCS_ENUM
+from .const import QDS_FLAGS, SU, DOW_ENUM, SEL_EXEC, DPI_ENUM, DIQ_FLAGS, SIQ_FLAGS, TRANSIENT, QOI_ENUM, R_ENUM, I_ENUM, QU_ENUM, SEL_EXEC, SCS_ENUM, DCS_ENUM
 from scapy.packet import Packet
 
 class COI(Packet):
@@ -67,8 +67,16 @@ class SCO(Packet):
     name = 'SCO'
     fields_desc = [
         BitEnumField('SE', 0, 1, SEL_EXEC),
-        BitEnumField('QU', 0, 6, QU_ENUM),
+        BitEnumField('QU', 1, 6, QU_ENUM),
         BitEnumField('SCS', 0, 1, SCS_ENUM),
+    ]
+
+class DCO(Packet):
+    name = 'DCO'
+    fields_desc = [
+        BitEnumField('SE', 0, 1, SEL_EXEC),
+        BitEnumField('QU', 1, 6, QU_ENUM),
+        BitEnumField('DCS', 1, 3, DCS_ENUM),
     ]
 
 class IOA1(Packet):
@@ -149,6 +157,13 @@ class IOA45(Packet):
         PacketField('SCO', None, SCO)
     ]
 
+class IOA46(Packet):
+    name = 'IOA'
+    fields_desc = [
+        IOAID('IOA', None),
+        PacketField('DCO', None, DCO)
+    ]
+
 class IOA50(Packet):
     name = 'IOA'
     fields_desc = [
@@ -193,6 +208,7 @@ IOAS = {
     1: IOA1,
     7: IOA7,
     45: IOA45,
+    46: IOA46,
 }
 
 IOALEN = {
@@ -209,5 +225,8 @@ IOALEN = {
     31: 11,
     1: 4,
     7: 8,
-    45: 4,
+    #45: 4, # IEC 104
+    45: 3, # IEC 101
+    #46: 4, # IEC 104
+    46: 3, # IEC 101
 }
