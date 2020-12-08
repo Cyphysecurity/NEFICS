@@ -33,4 +33,5 @@ class IOAID(Field):
  
 
     def getfield(self, pkt, s):
-        return s[3:], self.m2i(pkt, struct.unpack(self.fmt, s[:3] + b'\x00')[0])
+        # return s[3:], self.m2i(pkt, struct.unpack(self.fmt, s[:3] + b'\x00')[0])
+        return s[2:], self.m2i(pkt, struct.unpack(self.fmt, s[:2] + b'\x00\x00')[0]) # NOTE: For INFORMATION OBJECT ADDRESS of two octets
