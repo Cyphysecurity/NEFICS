@@ -8,6 +8,7 @@ TYPEID_ASDU = {
     0x1E: 'M_SP_TB_1 (30)',
     0x1F: 'M_DP_TB_1 (31)',
     0x24: 'M_ME_TF_1 (36)',
+    0x25: 'M_IT_TB_1 (37)',
     0x2D: 'C_SC_NA_1 (45)',
     0x2E: 'C_DC_NA_1 (46)',
     0x32: 'C_SE_NC_1 (50)',
