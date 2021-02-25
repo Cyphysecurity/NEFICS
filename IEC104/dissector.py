@@ -7,6 +7,16 @@ from scapy.fields import XByteField, ByteField, LEShortField, ShortField, Packet
 from .ioa import IOAS, IOALEN
 from .const import TYPE_APCI, SQ_ENUM, CAUSE_OF_TX, PN_ENUM, TYPEID_ASDU
 from scapy.all import conf
+# import logging
+
+# LOG_FORMAT = '%(asctime)s:%(levelname)s:%(message)s'
+# logging.basicConfig(
+#     filename= 'logfile.log',
+#     level= logging.DEBUG,
+#     format= LOG_FORMAT, 
+#     filemode= 'w',
+# )
+# logger = logging.getLogger()
 
 class ASDU(Packet):
 
@@ -154,6 +164,11 @@ class APCI(Packet):
 class APDU(Packet):
     name = 'APDU'
 
+    # def extract_padding(self, s):
+    #     # logger.info("pkt size = {0}".format(len(s)))
+    #     print("pkt size = {0}".format(len(s)))
+    #     return "", s
+
     def dissect(self, s):
         s = self.pre_dissect(s)
         s = self.do_dissect(s)
@@ -161,7 +176,7 @@ class APDU(Packet):
         payl, pad = self.extract_padding(s) 
         self.do_dissect_payload(payl)
         if pad and conf.padding:
-            if pad[0] in [0x68]: #TODO: [Luis] "self.underlayer is not None"
+            if pad[0] in [0x68]: 
                 self.add_payload(APDU(pad, _internal=1, _underlayer=self))
             else:
                 self.add_payload(Padding(pad))
