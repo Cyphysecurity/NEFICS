@@ -8,7 +8,7 @@ from copy import deepcopy
 from hashlib import md5
 from time import sleep
 import scapy.all as scapy
-from .IEC104_Raw.dissector import *
+from nefics.IEC104_Raw.dissector import *
 
 def getMAC(ip: str, interface: str) -> str:
     ans, unans = scapy.srp(scapy.Ether(dst='ff:ff:ff:ff:ff:ff')/scapy.ARP(op=1, pdst=ip), iface=interface, verbose=0)
