@@ -7,8 +7,8 @@ from threading import Thread
 from datetime import datetime
 from time import sleep
 from binascii import hexlify
-from IEC104.dissector import APDU
-from IEC104.const import *
+from nefics.IEC104.dissector import APDU
+from nefics.IEC104.const import *
 from helper104 import *
 
 RTU_TYPES = [           # Supported RTU types
