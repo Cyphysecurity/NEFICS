@@ -6,7 +6,7 @@ import random
 from time import sleep
 from struct import pack, unpack
 from threading import Thread
-from rtu import RTU, RTU_SOURCE, RTU_TRANSMISSION, RTU_LOAD, RTU_TYPES
+from nefics.rtu import RTU, RTU_SOURCE, RTU_TRANSMISSION, RTU_LOAD, RTU_TYPES
 
 if sys.platform[:3] == 'win':
     print('Intended to be executed in a mininet Linux environment.')
