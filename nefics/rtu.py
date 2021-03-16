@@ -9,7 +9,7 @@ from time import sleep
 from binascii import hexlify
 from nefics.IEC104.dissector import APDU
 from nefics.IEC104.const import *
-from helper104 import *
+from nefics.helper104 import *
 
 RTU_TYPES = [           # Supported RTU types
     'SOURCE',
