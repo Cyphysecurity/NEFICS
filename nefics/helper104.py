@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-from IEC104.dissector import ASDU, APCI, APDU
-from IEC104.ioa import *
+from nefics.IEC104.dissector import ASDU, APCI, APDU
+from nefics.IEC104.ioa import *
 import time
 from datetime import datetime
 
