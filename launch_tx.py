@@ -4,8 +4,8 @@ import sys
 import signal
 from threading import Thread
 from time import sleep
-from rtu import Transmission, RTU_TRANSMISSION
-from simcomm import SimulationHandler
+from nefics.rtu import Transmission, RTU_TRANSMISSION
+from nefics.simcomm import SimulationHandler
 
 if __name__ == '__main__':
     if sys.platform[:3] == 'win':
