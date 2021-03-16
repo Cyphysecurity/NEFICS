@@ -7,7 +7,7 @@ from time import sleep
 import scapy.all as scapy
 import netifaces as nic
 import ipaddress
-from IEC104_Raw.dissector import APDU
+from nefics.IEC104.dissector import APDU
 from iec104 import IEC104, get_command
 
 IEC104_PORT = 2404
